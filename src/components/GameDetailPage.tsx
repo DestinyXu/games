@@ -222,9 +222,12 @@ const GameDetailPage: React.FC = () => {
                       </div>
                       <h3>Connection issues</h3>
                       <p>Oops, we're having troubles connecting you. Any progress you make will be lost. Try reloading the game to solve the issue.</p>
+                      <div className="user-action-guide">
+                        <p className="highlight-tip">👉 点击"Continue offline"立即开始游戏！</p>
+                      </div>
                       <div className="error-actions">
-                        <button onClick={handleReloadGame} className="btn btn-primary">重新加载游戏</button>
-                        <button onClick={handleContinueOffline} className="btn btn-primary">继续离线模式</button>
+                        <button onClick={handleContinueOffline} className="btn btn-primary">Continue offline</button>
+                        <button onClick={handleReloadGame} className="btn btn-secondary">Reload game</button>
                       </div>
                     </div>
                   ) : (
