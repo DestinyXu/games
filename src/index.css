@@ -1,0 +1,329 @@
+:root {
+  --primary-color: #6C63FF;
+  --secondary-color: #FF6584;
+  --accent-color: #32E0C4;
+  --background-dark: #121212;
+  --background-light: #1E1E1E;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --card-bg: rgba(37, 37, 37, 0.8);
+  --card-hover: rgba(45, 45, 45, 0.9);
+  --success-color: #4CAF50;
+  --warning-color: #FF9800;
+  --error-color: #F44336;
+  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  --game-card-radius: 12px;
+  --transition-speed: 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', sans-serif;
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.neon-text {
+  text-shadow: 0 0 5px var(--primary-color), 
+               0 0 10px var(--primary-color), 
+               0 0 20px var(--primary-color);
+}
+
+.glassmorphism {
+  background: rgba(30, 30, 30, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #5A52E0;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Game Cards Styles */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.game-card {
+  background-color: var(--card-bg);
+  border-radius: var(--game-card-radius);
+  overflow: hidden;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  box-shadow: var(--box-shadow);
+  position: relative;
+  height: 100%;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+}
+
+.game-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-top: 60%; /* 16:9 aspect ratio */
+  overflow: hidden;
+}
+
+.game-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-speed);
+}
+
+.game-card:hover .game-thumbnail img {
+  transform: scale(1.05);
+}
+
+.game-info {
+  padding: 1rem;
+}
+
+.game-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.game-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.game-category {
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(108, 99, 255, 0.2);
+  border-radius: 30px;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.play-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-speed);
+}
+
+.game-card:hover .play-indicator {
+  opacity: 1;
+}
+
+.play-indicator svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+/* Main Content Styles */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  padding-top: 80px; /* Adjust for fixed header */
+  flex: 1;
+}
+
+/* Neon Glow Effects */
+.neon-glow {
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.5),
+              0 0 20px rgba(108, 99, 255, 0.3),
+              0 0 30px rgba(108, 99, 255, 0.1);
+}
+
+.neon-text-primary {
+  text-shadow: 0 0 5px var(--primary-color),
+               0 0 10px rgba(108, 99, 255, 0.5);
+}
+
+.neon-text-secondary {
+  text-shadow: 0 0 5px var(--secondary-color),
+               0 0 10px rgba(255, 101, 132, 0.5);
+}
+
+.neon-text-accent {
+  text-shadow: 0 0 5px var(--accent-color),
+               0 0 10px rgba(50, 224, 196, 0.5);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(108, 99, 255, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(108, 99, 255, 0.5);
+}
+
+/* Loading Animation */
+@keyframes loadingPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+}
+
+.loading-pulse {
+  animation: loadingPulse 1.5s infinite;
+}
+
+/* Utility Classes */
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Accessibility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus-ring:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+} 

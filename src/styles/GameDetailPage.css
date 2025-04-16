@@ -1,0 +1,482 @@
+.game-detail-page {
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+.game-detail-header {
+  margin-bottom: 2rem;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.breadcrumbs a {
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--primary-color);
+}
+
+.breadcrumb-separator {
+  margin: 0 0.5rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.current-page {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.game-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.game-categories {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.game-category-link {
+  padding: 0.5rem 1rem;
+  background-color: rgba(108, 99, 255, 0.15);
+  border-radius: 30px;
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.game-category-link:hover {
+  background-color: rgba(108, 99, 255, 0.25);
+}
+
+.game-content-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.game-container {
+  position: relative;
+  border-radius: var(--game-card-radius);
+  overflow: hidden;
+  background-color: var(--card-bg);
+  box-shadow: var(--box-shadow);
+  aspect-ratio: 16 / 9;
+}
+
+.game-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.game-thumbnail-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.play-game-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.play-game-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.play-game-btn:hover {
+  background-color: #5A52E0;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.game-iframe-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 宽高比 */
+  background-color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.game-iframe-container.loaded {
+  opacity: 1;
+}
+
+.game-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+  color: white;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.game-iframe-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.game-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.game-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.game-details {
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: var(--game-card-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.game-description {
+  margin-bottom: 2rem;
+}
+
+.game-description h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.game-description p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.game-meta-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-meta-info h3 {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.game-rating-detail .rating-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rating-stars .star {
+  color: #aaa;
+  font-size: 1rem;
+}
+
+.rating-stars .star.filled {
+  color: #FFD700;
+}
+
+.rating-value {
+  margin-left: 0.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.game-plays-detail p,
+.game-added-date p {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.game-tags h3 {
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.game-tag {
+  padding: 0.35rem 0.8rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.game-tag:hover {
+  background-color: rgba(108, 99, 255, 0.2);
+  color: var(--primary-color);
+}
+
+.game-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.game-action-btn {
+  flex: 1;
+  min-width: 100px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.related-games-section {
+  margin: 2rem 0 4rem;
+}
+
+.related-games-section .section-title {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.related-games-section .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.loading-container,
+.error-container {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.error-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.error-container p {
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 992px) {
+  .game-content-wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .game-container {
+    aspect-ratio: 16 / 9;
+    max-height: 70vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-title {
+    font-size: 2rem;
+  }
+  
+  .play-game-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .game-meta-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 连接错误样式 */
+.connection-error {
+  text-align: center;
+  background-color: rgba(30, 30, 40, 0.9);
+  border-radius: 10px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error-icon {
+  margin-bottom: 1rem;
+  color: #f3f3f3;
+}
+
+.connection-error h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f3f3f3;
+}
+
+.connection-error p {
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  color: #aaa;
+}
+
+.error-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* 离线模式样式 */
+.offline-mode {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #111;
+  padding: 1rem;
+}
+
+.offline-thumbnail {
+  max-width: 80%;
+  max-height: 60%;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  opacity: 0.7;
+}
+
+.offline-message {
+  text-align: center;
+  color: #fff;
+}
+
+.offline-message h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #f3f3f3;
+}
+
+.offline-message p {
+  color: #aaa;
+}
+
+.inline-btn {
+  background: none;
+  border: none;
+  color: #5c6bc0;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+}
+
+.inline-btn:hover {
+  color: #7986cb;
+}
+
+.user-action-guide {
+  margin: 15px 0;
+}
+
+.highlight-tip {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffcc00;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px 15px;
+  border-radius: 6px;
+  border-left: 4px solid #ffcc00;
+  animation: pulsate 1.5s infinite alternate;
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+}
+
+@keyframes pulsate {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0.9; transform: scale(1.03); }
+} 
